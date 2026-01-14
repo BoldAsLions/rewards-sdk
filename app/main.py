@@ -28,7 +28,7 @@ def health():
 @app.post("/payments")
 def create_payment(
     req: PaymentRequest,
-    idempotency_key: Optional[str] = Header(None, convert_underscores=False),
+    idempotency_key: Optional[str] = Header(None, alias="Idempotency-Key"), 
 ):
     if not idempotency_key:
         raise HTTPException(status_code=400, detail="Idempotency-Key required")
