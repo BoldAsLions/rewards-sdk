@@ -1,6 +1,6 @@
 # Part 3 Problem Solving
 
-## Scenario 1: A critical bug in production—Lightning payments occasionally fail with timeout but users are still charged (1% normally, 5% during traffic spikes).
+## Scenario 1: A critical bug in production, Lightning payments occasionally fail with timeout but users are still charged (1% normally, 5% during traffic spikes).
 
 ### How I would reproduce it
 Simulate latency so the client times out while the backend still completes the Lightning payment.  Run the same flow under concurrency to recreate traffic spike behavior.  Confirm the bad state by comparing client response errors with backend settlement or payment status.
@@ -17,10 +17,10 @@ Add load tests that include timeouts and retry behavior. Alert on mismatch betwe
 ## Scenario 2: You're starting as the first QA engineer at ZBD (Bitcoin/Lightning payment platform with mobile apps and APIs).
 
 ### First 30 days
-Week 1: map money in and money out flows end to end across mobile and APIs. Review incidents and support patterns.  
-Week 2: identify the highest risk gaps and define a small set of non negotiable checks for payment changes.  
-Week 3: implement smoke tests and idempotency coverage in CI for payment critical paths.  
-Week 4: expand a focused regression suite around payments auth balances withdrawals and reconciliation.
+Week 1: Map money in and money out flows end to end across mobile and APIs. Review incidents and support patterns.  
+Week 2: Identify the highest risk gaps and define a small set of non negotiable checks for payment changes.  
+Week 3: Implement smoke tests and idempotency coverage in CI for payment critical paths.  
+Week 4: Expand a focused regression suite around payments auth balances withdrawals and reconciliation.
 
 ### Speed vs coverage
 Risk based.  Smoke tests on every PR. Payment critical gates only where money moves.  Deeper suite runs nightly. Manual testing used for UX and complex edge cases, not repeatable API logic.
