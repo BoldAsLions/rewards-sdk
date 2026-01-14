@@ -30,11 +30,6 @@ pytest
 ### Run load test
 k6 run load/k6_payments.js
 
-### Provision test environment
-terraform -chdir=infra init 
-
-terraform -chdir=infra apply
-
 ## What to Look At
 Payment creation requires an `Idempotency-Key` header. Retried requests with the same payload return the original result, while reusing a key with different input is rejected.
 
