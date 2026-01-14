@@ -13,6 +13,11 @@ k6 for basic concurrent load testing
 GitHub Actions for CI to run tests on pull requests and block bad merges  
 
 
+## Test Plan
+A structured test plan is included for review:
+- `docs/rewards_sdk_test_plan.pdf` (readable)
+- `docs/rewards_sdk_test_plan.xlsx` (editable source)
+
 ## Trade-offs
 The API is intentionally minimal so the repository highlights payment correctness rather than application features.  
 In-memory storage is used to keep the project easy to run and review while modeling the same idempotency guarantees enforced by database constraints in production.  
