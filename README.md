@@ -11,7 +11,6 @@ FastAPI for the mock payment API
 Pytest and httpx for functional API testing  
 k6 for basic concurrent load testing  
 GitHub Actions for CI to run tests on pull requests and block bad merges  
-Terraform with the Docker provider for repeatable test environments  
 
 
 ## Trade-offs
