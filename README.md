@@ -35,5 +35,18 @@ Payment creation requires an `Idempotency-Key` header. Retried requests with the
 
 The test suite includes a timeout-after-commit scenario to demonstrate how retries remain safe even when the client does not receive an initial response.
 
+## Brief Report (Load Test Findings)
+
+### Setup
+The payment endpoint was exercised using k6 with 75 concurrent virtual users for 30 seconds. Each request used a unique Idempotency-Key to simulate real payment submissions under load.
+
+### Findings
+Under concurrent load, the API handled requests correctly when responsive. When latency or timeouts occurred, clients retried requests, which highlights a critical payment risk: retries can happen even after a transaction has been committed server side.
+
+### Recommendations
+Require an Idempotency-Key for all payment creation requests and persist the request fingerprint with the response.  
+Reject key reuse with different payloads to prevent duplicate charges.  
+Instrument payment lifecycle metrics and alert on retry spikes or timeout after commit scenarios.  
+Use bounded retries with backoff in clients and prefer async status checks for long-running operations.
 
 
